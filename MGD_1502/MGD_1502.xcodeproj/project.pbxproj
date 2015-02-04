@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		730F17361A81BAB900F106C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17351A81BAB900F106C4 /* main.m */; };
 		730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17381A81BAB900F106C4 /* AppDelegate.m */; };
-		730F173C1A81BAB900F106C4 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F173B1A81BAB900F106C4 /* GameScene.m */; };
-		730F173E1A81BAB900F106C4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 730F173D1A81BAB900F106C4 /* GameScene.sks */; };
-		730F17411A81BAB900F106C4 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17401A81BAB900F106C4 /* GameViewController.m */; };
+		730F173C1A81BAB900F106C4 /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F173B1A81BAB900F106C4 /* TitleScene.m */; };
+		730F17411A81BAB900F106C4 /* MGDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17401A81BAB900F106C4 /* MGDVC.m */; };
 		730F17441A81BAB900F106C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730F17421A81BAB900F106C4 /* Main.storyboard */; };
 		730F17461A81BAB900F106C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 730F17451A81BAB900F106C4 /* Images.xcassets */; };
 		730F17491A81BAB900F106C4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730F17471A81BAB900F106C4 /* LaunchScreen.xib */; };
@@ -34,11 +33,10 @@
 		730F17351A81BAB900F106C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		730F17371A81BAB900F106C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		730F17381A81BAB900F106C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		730F173A1A81BAB900F106C4 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		730F173B1A81BAB900F106C4 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		730F173D1A81BAB900F106C4 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		730F173F1A81BAB900F106C4 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		730F17401A81BAB900F106C4 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		730F173A1A81BAB900F106C4 /* TitleScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
+		730F173B1A81BAB900F106C4 /* TitleScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
+		730F173F1A81BAB900F106C4 /* MGDVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDVC.h; sourceTree = "<group>"; };
+		730F17401A81BAB900F106C4 /* MGDVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDVC.m; sourceTree = "<group>"; };
 		730F17431A81BAB900F106C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		730F17451A81BAB900F106C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		730F17481A81BAB900F106C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -88,12 +86,7 @@
 			children = (
 				730F17371A81BAB900F106C4 /* AppDelegate.h */,
 				730F17381A81BAB900F106C4 /* AppDelegate.m */,
-				730F173A1A81BAB900F106C4 /* GameScene.h */,
-				730F173B1A81BAB900F106C4 /* GameScene.m */,
-				730F173D1A81BAB900F106C4 /* GameScene.sks */,
-				730F173F1A81BAB900F106C4 /* GameViewController.h */,
-				730F17401A81BAB900F106C4 /* GameViewController.m */,
-				730F17421A81BAB900F106C4 /* Main.storyboard */,
+				730F175E1A81BBFC00F106C4 /* Scenes */,
 				730F17451A81BAB900F106C4 /* Images.xcassets */,
 				730F17471A81BAB900F106C4 /* LaunchScreen.xib */,
 				730F17331A81BAB900F106C4 /* Supporting Files */,
@@ -104,6 +97,9 @@
 		730F17331A81BAB900F106C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				730F173F1A81BAB900F106C4 /* MGDVC.h */,
+				730F17401A81BAB900F106C4 /* MGDVC.m */,
+				730F17421A81BAB900F106C4 /* Main.storyboard */,
 				730F17341A81BAB900F106C4 /* Info.plist */,
 				730F17351A81BAB900F106C4 /* main.m */,
 			);
@@ -125,6 +121,15 @@
 				730F17531A81BAB900F106C4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		730F175E1A81BBFC00F106C4 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				730F173A1A81BAB900F106C4 /* TitleScene.h */,
+				730F173B1A81BAB900F106C4 /* TitleScene.m */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +214,6 @@
 			files = (
 				730F17491A81BAB900F106C4 /* LaunchScreen.xib in Resources */,
 				730F17461A81BAB900F106C4 /* Images.xcassets in Resources */,
-				730F173E1A81BAB900F106C4 /* GameScene.sks in Resources */,
 				730F17441A81BAB900F106C4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,9 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				730F17411A81BAB900F106C4 /* GameViewController.m in Sources */,
+				730F17411A81BAB900F106C4 /* MGDVC.m in Sources */,
 				730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */,
-				730F173C1A81BAB900F106C4 /* GameScene.m in Sources */,
+				730F173C1A81BAB900F106C4 /* TitleScene.m in Sources */,
 				730F17361A81BAB900F106C4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
