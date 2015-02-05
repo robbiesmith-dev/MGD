@@ -35,13 +35,24 @@
     /* Called when a touch begins */
     
     for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+        //CGPoint location = [touch locationInNode:self];
         
-        _player = [SKSpriteNode spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(20, 50)];
-        _player.position = location;
-        _player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_player.frame.size];
-        
-        [self addChild:_player];
+        NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
+        for (SKNode *node in nodes)
+        {
+            //or check the node against your nodes
+            if ([node.name isEqualToString:@"bg"])
+            {
+                [self addLaser];
+                [self runAction:[SKAction playSoundFileNamed:@"rock.wav" waitForCompletion:NO]];
+            }
+            
+            if ([node.name isEqualToString:@"player"])
+            {
+                [self runAction:[SKAction playSoundFileNamed:@"spaceship.wav" waitForCompletion:NO]];
+
+            }
+        }
     }
 }
 
@@ -56,11 +67,11 @@
 {
     //Player
     _player = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-    
     _player.size = CGSizeMake(75, 75);
     _player.position = CGPointMake(self.frame.size.width/2, 100);
     _player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_player.frame.size];
-    _player.physicsBody.dynamic = NO; 
+    _player.physicsBody.dynamic = NO;
+    _player.name = @"player";
     
     [self addChild:_player];
 }
@@ -76,6 +87,17 @@
     sky.name = @"bg";
     
     [self addChild:sky];
+}
+
+-(void)addLaser
+{
+   //Laser
+    SKSpriteNode *laser = [SKSpriteNode spriteNodeWithColor:[SKColor redColor] size:CGSizeMake(20, 40)];
+    laser.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 40);
+    laser.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:laser.frame.size];
+    laser.name = @"laser";
+    
+    [self addChild:laser];
 }
 
 @end

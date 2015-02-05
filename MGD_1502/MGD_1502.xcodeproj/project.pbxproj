@@ -17,6 +17,8 @@
 		730F17551A81BAB900F106C4 /* MGD_1502Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17541A81BAB900F106C4 /* MGD_1502Tests.m */; };
 		730F176C1A83ECAB00F106C4 /* newBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 730F176B1A83ECAB00F106C4 /* newBG.png */; };
 		730F17A51A83EE9400F106C4 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A41A83EE9400F106C4 /* Spaceship.png */; };
+		730F17A71A83F97C00F106C4 /* rock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A61A83F97C00F106C4 /* rock.wav */; };
+		730F17AA1A8413CE00F106C4 /* spaceship.wav in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A91A8413CE00F106C4 /* spaceship.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		730F17541A81BAB900F106C4 /* MGD_1502Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGD_1502Tests.m; sourceTree = "<group>"; };
 		730F176B1A83ECAB00F106C4 /* newBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newBG.png; sourceTree = "<group>"; };
 		730F17A41A83EE9400F106C4 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		730F17A61A83F97C00F106C4 /* rock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rock.wav; sourceTree = "<group>"; };
+		730F17A91A8413CE00F106C4 /* spaceship.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spaceship.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 			children = (
 				730F17371A81BAB900F106C4 /* AppDelegate.h */,
 				730F17381A81BAB900F106C4 /* AppDelegate.m */,
+				730F17A61A83F97C00F106C4 /* rock.wav */,
+				730F17A91A8413CE00F106C4 /* spaceship.wav */,
 				730F176B1A83ECAB00F106C4 /* newBG.png */,
 				730F17A41A83EE9400F106C4 /* Spaceship.png */,
 				730F175E1A81BBFC00F106C4 /* Scenes */,
@@ -221,7 +227,9 @@
 				730F17A51A83EE9400F106C4 /* Spaceship.png in Resources */,
 				730F17491A81BAB900F106C4 /* LaunchScreen.xib in Resources */,
 				730F17461A81BAB900F106C4 /* Images.xcassets in Resources */,
+				730F17A71A83F97C00F106C4 /* rock.wav in Resources */,
 				730F17441A81BAB900F106C4 /* Main.storyboard in Resources */,
+				730F17AA1A8413CE00F106C4 /* spaceship.wav in Resources */,
 				730F176C1A83ECAB00F106C4 /* newBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
