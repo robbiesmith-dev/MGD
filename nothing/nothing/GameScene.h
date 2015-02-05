@@ -1,6 +1,6 @@
 //
 //  GameScene.h
-//  MGD_1502
+//  nothing
 //
 
 //  Copyright (c) 2015 Robert Smith. All rights reserved.
@@ -8,8 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface TitleScene : SKScene
-
-@property (nonatomic) SKSpriteNode *player;
+@interface GameScene : SKScene
 
 @end
