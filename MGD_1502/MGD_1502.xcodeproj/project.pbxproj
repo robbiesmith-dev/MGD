@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		730F17361A81BAB900F106C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17351A81BAB900F106C4 /* main.m */; };
 		730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17381A81BAB900F106C4 /* AppDelegate.m */; };
-		730F173C1A81BAB900F106C4 /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F173B1A81BAB900F106C4 /* TitleScene.m */; };
+		730F173C1A81BAB900F106C4 /* GamePlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F173B1A81BAB900F106C4 /* GamePlayScene.m */; };
 		730F17411A81BAB900F106C4 /* MGDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17401A81BAB900F106C4 /* MGDVC.m */; };
 		730F17441A81BAB900F106C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730F17421A81BAB900F106C4 /* Main.storyboard */; };
 		730F17461A81BAB900F106C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 730F17451A81BAB900F106C4 /* Images.xcassets */; };
@@ -37,8 +37,8 @@
 		730F17351A81BAB900F106C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		730F17371A81BAB900F106C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		730F17381A81BAB900F106C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		730F173A1A81BAB900F106C4 /* TitleScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
-		730F173B1A81BAB900F106C4 /* TitleScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
+		730F173A1A81BAB900F106C4 /* GamePlayScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GamePlayScene.h; sourceTree = "<group>"; };
+		730F173B1A81BAB900F106C4 /* GamePlayScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GamePlayScene.m; sourceTree = "<group>"; };
 		730F173F1A81BAB900F106C4 /* MGDVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDVC.h; sourceTree = "<group>"; };
 		730F17401A81BAB900F106C4 /* MGDVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDVC.m; sourceTree = "<group>"; };
 		730F17431A81BAB900F106C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 		730F175E1A81BBFC00F106C4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				730F173A1A81BAB900F106C4 /* TitleScene.h */,
-				730F173B1A81BAB900F106C4 /* TitleScene.m */,
+				730F173A1A81BAB900F106C4 /* GamePlayScene.h */,
+				730F173B1A81BAB900F106C4 /* GamePlayScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 			files = (
 				730F17411A81BAB900F106C4 /* MGDVC.m in Sources */,
 				730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */,
-				730F173C1A81BAB900F106C4 /* TitleScene.m in Sources */,
+				730F173C1A81BAB900F106C4 /* GamePlayScene.m in Sources */,
 				730F17361A81BAB900F106C4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

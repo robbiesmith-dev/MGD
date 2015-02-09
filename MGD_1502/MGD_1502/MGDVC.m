@@ -7,7 +7,7 @@
 //
 
 #import "MGDVC.h"
-#import "TitleScene.h"
+#import "GamePlayScene.h"
 
 @implementation MGDVC
 
@@ -21,7 +21,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [TitleScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [GamePlayScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
@@ -38,7 +38,8 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
         return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else
+    }
+    else
     {
         return UIInterfaceOrientationMaskAll;
     }

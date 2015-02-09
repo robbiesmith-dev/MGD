@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Robert Smith. All rights reserved.
 //
 
-#import "TitleScene.h"
+#import "GamePlayScene.h"
 
-@implementation TitleScene
+@implementation GamePlayScene
 
 -(id)initWithSize:(CGSize)size
 {
@@ -31,28 +31,50 @@
 }
 
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     /* Called when a touch begins */
     
-    for (UITouch *touch in touches) {
+    for (UITouch *touch in touches)
+    {
         //CGPoint location = [touch locationInNode:self];
         
         NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
         for (SKNode *node in nodes)
         {
             //or check the node against your nodes
-            if ([node.name isEqualToString:@"bg"])
-            {
-                [self addLaser];
-                [self runAction:[SKAction playSoundFileNamed:@"rock.wav" waitForCompletion:NO]];
-            }
+//            if ([node.name isEqualToString:@"bg"])
+//            {
+//                [self addLaser];
+//                [self runAction:[SKAction playSoundFileNamed:@"rock.wav" waitForCompletion:NO]];
+//            }
             
             if ([node.name isEqualToString:@"player"])
             {
                 [self runAction:[SKAction playSoundFileNamed:@"spaceship.wav" waitForCompletion:NO]];
-
             }
         }
+    }
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches)
+    {
+        CGPoint location = [touch locationInNode:self];
+        CGPoint newPosition = CGPointMake(location.x, 100);
+        
+        // stop the paddle from going too far
+        if (newPosition.x < _player.size.width / 2)
+        {
+            newPosition.x = _player.size.width / 2;
+        }
+        if (newPosition.x > self.size.width - (_player.size.width/2))
+        {
+            newPosition.x = self.size.width - (_player.size.width/2);
+        }
+        
+        _player.position = newPosition;
     }
 }
 
@@ -78,7 +100,6 @@
 
 - (void)addBG
 {
-    
     //Set Sky from PNG
     SKSpriteNode *sky = [SKSpriteNode spriteNodeWithImageNamed:@"newBG"];
     sky.size = CGSizeMake(self.frame.size.width, self.frame.size.height);

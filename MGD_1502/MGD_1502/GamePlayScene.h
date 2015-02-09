@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface TitleScene : SKScene <SKPhysicsContactDelegate>
+@interface GamePlayScene : SKScene <SKPhysicsContactDelegate>
 
 @property (nonatomic) SKSpriteNode *player;
 
