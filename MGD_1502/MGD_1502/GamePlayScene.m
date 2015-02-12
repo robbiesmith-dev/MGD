@@ -8,14 +8,19 @@
 
 #import "GamePlayScene.h"
 #import "RandomGen.h"
+#import <AVFoundation/AVFoundation.h>
+#import "GameOverScene.h"
 
 @interface GamePlayScene ()
 
 @property (nonatomic) NSTimeInterval lastUpdate;
 @property (nonatomic) NSTimeInterval lastTimeSpawned;
 
-@property BOOL spaceshipTouched;
+@property (nonatomic) AVAudioPlayer *track;
 
+@property CGPoint spaceshipCenter;
+
+@property BOOL spaceshipTouched;
 
 
 @end
@@ -51,8 +56,20 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         [self addBG];
         [self addPlayer];
         [self addGround];
+        
+        NSURL *trackURL = [[NSBundle mainBundle] URLForResource:@"MGD_BG_Track" withExtension:@"mp3"];
+        
+        self.track = [[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:nil];
+        self.track.numberOfLoops = -1;
+        [self.track prepareToPlay];
+        
     }
     return self;
+}
+
+-(void)didMoveToView:(SKView *)view
+{
+    [self.track play];
 }
 
 
@@ -62,7 +79,7 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     
     for (UITouch *touch in touches)
     {
-        //CGPoint location = [touch locationInNode:self];
+       // CGPoint location = [touch locationInNode:self];
         
         NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
         for (SKNode *node in nodes)
@@ -160,11 +177,21 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     {
         NSLog(@"LOSSER");
         
+        [self.track stop];
+        
         [self runAction:[SKAction playSoundFileNamed:@"You Lose.mp3" waitForCompletion:NO]];
 
         SKSpriteNode *player = (SKSpriteNode*)bodyOne.node;
         
         [player removeFromParent];
+        
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            GameOverScene *gameOverScene = [GameOverScene sceneWithSize:self.frame.size];
+            SKTransition *transition = [SKTransition fadeWithDuration:1.0];
+            [self.view presentScene:gameOverScene transition:transition];
+        });
+
 
         
     }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		730E65951A8BE8600095A5C0 /* RandomGen.m in Sources */ = {isa = PBXBuildFile; fileRef = 730E65941A8BE8600095A5C0 /* RandomGen.m */; };
 		730E65971A8D16AF0095A5C0 /* You Lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 730E65961A8D16AF0095A5C0 /* You Lose.mp3 */; };
+		730E659C1A8D33590095A5C0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730E659B1A8D33590095A5C0 /* AVFoundation.framework */; };
+		730E659F1A8D35020095A5C0 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 730E659E1A8D35020095A5C0 /* GameOverScene.m */; };
+		730E65D81A8D36E50095A5C0 /* MGD_BG_Track.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 730E65D71A8D36E50095A5C0 /* MGD_BG_Track.mp3 */; };
 		730F17361A81BAB900F106C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17351A81BAB900F106C4 /* main.m */; };
 		730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17381A81BAB900F106C4 /* AppDelegate.m */; };
 		730F173C1A81BAB900F106C4 /* GamePlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F173B1A81BAB900F106C4 /* GamePlayScene.m */; };
@@ -37,7 +40,10 @@
 		730E65931A8BE8600095A5C0 /* RandomGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomGen.h; sourceTree = "<group>"; };
 		730E65941A8BE8600095A5C0 /* RandomGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomGen.m; sourceTree = "<group>"; };
 		730E65961A8D16AF0095A5C0 /* You Lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "You Lose.mp3"; sourceTree = "<group>"; };
-		730E65981A8D30140095A5C0 /* MobleGameDesignBGTrack.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = MobleGameDesignBGTrack.m4a; sourceTree = "<group>"; };
+		730E659B1A8D33590095A5C0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		730E659D1A8D35020095A5C0 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		730E659E1A8D35020095A5C0 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
+		730E65D71A8D36E50095A5C0 /* MGD_BG_Track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MGD_BG_Track.mp3; sourceTree = "<group>"; };
 		730F17301A81BAB900F106C4 /* MGD_1502.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGD_1502.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		730F17341A81BAB900F106C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		730F17351A81BAB900F106C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				730E659C1A8D33590095A5C0 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +87,7 @@
 		730E65991A8D32C20095A5C0 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				730E65981A8D30140095A5C0 /* MobleGameDesignBGTrack.m4a */,
+				730E65D71A8D36E50095A5C0 /* MGD_BG_Track.mp3 */,
 				730E65961A8D16AF0095A5C0 /* You Lose.mp3 */,
 				730F17A61A83F97C00F106C4 /* rock.wav */,
 				730F17A91A8413CE00F106C4 /* spaceship.wav */,
@@ -100,6 +107,7 @@
 		730F17271A81BAB900F106C4 = {
 			isa = PBXGroup;
 			children = (
+				730E659B1A8D33590095A5C0 /* AVFoundation.framework */,
 				730F17321A81BAB900F106C4 /* MGD_1502 */,
 				730F17511A81BAB900F106C4 /* MGD_1502Tests */,
 				730F17311A81BAB900F106C4 /* Products */,
@@ -166,6 +174,8 @@
 			children = (
 				730F173A1A81BAB900F106C4 /* GamePlayScene.h */,
 				730F173B1A81BAB900F106C4 /* GamePlayScene.m */,
+				730E659D1A8D35020095A5C0 /* GameOverScene.h */,
+				730E659E1A8D35020095A5C0 /* GameOverScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -258,6 +268,7 @@
 				730F17441A81BAB900F106C4 /* Main.storyboard in Resources */,
 				730F17AA1A8413CE00F106C4 /* spaceship.wav in Resources */,
 				730F176C1A83ECAB00F106C4 /* newBG.png in Resources */,
+				730E65D81A8D36E50095A5C0 /* MGD_BG_Track.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +290,7 @@
 				730F17411A81BAB900F106C4 /* MGDVC.m in Sources */,
 				730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */,
 				730F173C1A81BAB900F106C4 /* GamePlayScene.m in Sources */,
+				730E659F1A8D35020095A5C0 /* GameOverScene.m in Sources */,
 				730F17361A81BAB900F106C4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
