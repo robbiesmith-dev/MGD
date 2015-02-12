@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730E65951A8BE8600095A5C0 /* RandomGen.m in Sources */ = {isa = PBXBuildFile; fileRef = 730E65941A8BE8600095A5C0 /* RandomGen.m */; };
+		730E65971A8D16AF0095A5C0 /* You Lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 730E65961A8D16AF0095A5C0 /* You Lose.mp3 */; };
 		730F17361A81BAB900F106C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17351A81BAB900F106C4 /* main.m */; };
 		730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F17381A81BAB900F106C4 /* AppDelegate.m */; };
 		730F173C1A81BAB900F106C4 /* GamePlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F173B1A81BAB900F106C4 /* GamePlayScene.m */; };
@@ -32,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		730E65931A8BE8600095A5C0 /* RandomGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomGen.h; sourceTree = "<group>"; };
+		730E65941A8BE8600095A5C0 /* RandomGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomGen.m; sourceTree = "<group>"; };
+		730E65961A8D16AF0095A5C0 /* You Lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "You Lose.mp3"; sourceTree = "<group>"; };
+		730E65981A8D30140095A5C0 /* MobleGameDesignBGTrack.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = MobleGameDesignBGTrack.m4a; sourceTree = "<group>"; };
 		730F17301A81BAB900F106C4 /* MGD_1502.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGD_1502.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		730F17341A81BAB900F106C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		730F17351A81BAB900F106C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,6 +77,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		730E65991A8D32C20095A5C0 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				730E65981A8D30140095A5C0 /* MobleGameDesignBGTrack.m4a */,
+				730E65961A8D16AF0095A5C0 /* You Lose.mp3 */,
+				730F17A61A83F97C00F106C4 /* rock.wav */,
+				730F17A91A8413CE00F106C4 /* spaceship.wav */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		730E659A1A8D32E30095A5C0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				730F176B1A83ECAB00F106C4 /* newBG.png */,
+				730F17A41A83EE9400F106C4 /* Spaceship.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		730F17271A81BAB900F106C4 = {
 			isa = PBXGroup;
 			children = (
@@ -92,16 +118,14 @@
 		730F17321A81BAB900F106C4 /* MGD_1502 */ = {
 			isa = PBXGroup;
 			children = (
-				730F17371A81BAB900F106C4 /* AppDelegate.h */,
-				730F17381A81BAB900F106C4 /* AppDelegate.m */,
-				730F17A61A83F97C00F106C4 /* rock.wav */,
-				730F17A91A8413CE00F106C4 /* spaceship.wav */,
-				730F176B1A83ECAB00F106C4 /* newBG.png */,
-				730F17A41A83EE9400F106C4 /* Spaceship.png */,
 				730F175E1A81BBFC00F106C4 /* Scenes */,
+				730E659A1A8D32E30095A5C0 /* Images */,
+				730E65991A8D32C20095A5C0 /* Sounds */,
 				730F17451A81BAB900F106C4 /* Images.xcassets */,
 				730F17471A81BAB900F106C4 /* LaunchScreen.xib */,
 				730F17331A81BAB900F106C4 /* Supporting Files */,
+				730E65931A8BE8600095A5C0 /* RandomGen.h */,
+				730E65941A8BE8600095A5C0 /* RandomGen.m */,
 			);
 			path = MGD_1502;
 			sourceTree = "<group>";
@@ -109,6 +133,8 @@
 		730F17331A81BAB900F106C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				730F17371A81BAB900F106C4 /* AppDelegate.h */,
+				730F17381A81BAB900F106C4 /* AppDelegate.m */,
 				730F173F1A81BAB900F106C4 /* MGDVC.h */,
 				730F17401A81BAB900F106C4 /* MGDVC.m */,
 				730F17421A81BAB900F106C4 /* Main.storyboard */,
@@ -226,6 +252,7 @@
 			files = (
 				730F17A51A83EE9400F106C4 /* Spaceship.png in Resources */,
 				730F17491A81BAB900F106C4 /* LaunchScreen.xib in Resources */,
+				730E65971A8D16AF0095A5C0 /* You Lose.mp3 in Resources */,
 				730F17461A81BAB900F106C4 /* Images.xcassets in Resources */,
 				730F17A71A83F97C00F106C4 /* rock.wav in Resources */,
 				730F17441A81BAB900F106C4 /* Main.storyboard in Resources */,
@@ -248,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				730E65951A8BE8600095A5C0 /* RandomGen.m in Sources */,
 				730F17411A81BAB900F106C4 /* MGDVC.m in Sources */,
 				730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */,
 				730F173C1A81BAB900F106C4 /* GamePlayScene.m in Sources */,
