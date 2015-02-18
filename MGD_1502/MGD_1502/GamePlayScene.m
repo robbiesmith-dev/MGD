@@ -79,7 +79,7 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     
     for (UITouch *touch in touches)
     {
-       // CGPoint location = [touch locationInNode:self];
+        //CGPoint location = [touch locationInNode:self];
         
         NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
         for (SKNode *node in nodes)
@@ -273,16 +273,6 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     
     [self addChild:ground];
 }
-
-
-
-
-
-
-
-
-
-
 
 
 @end
