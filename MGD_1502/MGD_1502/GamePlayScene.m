@@ -10,6 +10,7 @@
 #import "RandomGen.h"
 #import <AVFoundation/AVFoundation.h>
 #import "GameOverScene.h"
+#import "AGSpriteButton.h"
 
 @interface GamePlayScene ()
 
@@ -26,6 +27,13 @@
 
 @property (nonatomic) SKNode *hud;
 
+@property (nonatomic) SKNode *gameplayNode;
+
+@property (nonatomic) SKNode *pauseMenu;
+
+@property (nonatomic) AGSpriteButton *button;
+
+@property BOOL isPaused;
 
 @end
 
@@ -42,6 +50,9 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 {
     if (self = [super initWithSize:size])
     {
+        _gameplayNode = [[SKNode alloc]init];
+        _gameplayNode.position = CGPointMake(self.frame.origin.x, self.frame.origin.y);
+        [self addChild:_gameplayNode];
         
         _score = 0;
         
@@ -97,6 +108,13 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
                 self.spaceshipTouched = YES;
                 [self runAction:[SKAction playSoundFileNamed:@"spaceship.wav" waitForCompletion:NO]];
             }
+            else if ([node.name isEqualToString:@"pause"])
+            {
+                if (_isPaused == NO)
+                {
+                    [self pauseGame];
+                }
+            }
             else
             {
                 self.spaceshipTouched = NO;
@@ -149,21 +167,24 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 
 -(void)update:(CFTimeInterval)currentTime
 {
-    //Update Time Management
-    if (self.lastUpdate)
+    if (!_isPaused)
     {
-        self.lastTimeSpawned += currentTime - self.lastUpdate;
+        //Update Time Management
+        if (self.lastUpdate)
+        {
+            self.lastTimeSpawned += currentTime - self.lastUpdate;
+        }
+        
+        if (self.lastTimeSpawned > .5)
+        {
+            [self addLaser];
+            //Reset
+            self.lastTimeSpawned = 0;
+        }
+        
+        self.lastUpdate = currentTime;
     }
-    
-    if (self.lastTimeSpawned > .5)
-    {
-        [self addLaser];
-        //Reset
-        self.lastTimeSpawned = 0;
-    }
-    
-    self.lastUpdate = currentTime;
-    
+
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
@@ -190,9 +211,22 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         [self runAction:[SKAction playSoundFileNamed:@"You Lose.mp3" waitForCompletion:NO]];
 
         SKSpriteNode *player = (SKSpriteNode*)bodyOne.node;
+        SKSpriteNode *laser = (SKSpriteNode*)bodyTwo.node;
         
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"MyParticle" ofType:@"sks"];
+        
+        SKEmitterNode *boom = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        
+        boom.position = player.position;
+        
+        [laser removeFromParent];
         [player removeFromParent];
         
+        [self addChild:boom];
+
+        [boom runAction:[SKAction waitForDuration:2.0] completion:^{
+            [boom removeFromParent];
+        }];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             GameOverScene *gameOverScene = [GameOverScene sceneWithSize:self.frame.size];
@@ -203,7 +237,7 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 
         
     }
-    else if (bodyOne.categoryBitMask == Laser && bodyTwo.categoryBitMask == Ground)
+    else //if (bodyOne.categoryBitMask == Laser && bodyTwo.categoryBitMask == Ground)
     {
         NSLog(@"AVOIDED");
         
@@ -214,8 +248,6 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         _score++;
         
         [self updateScore];
-        
-        NSLog(@"%ld",(long) _score);
     }
 }
 
@@ -233,21 +265,64 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     
     SKLabelNode *score = [[SKLabelNode alloc] initWithFontNamed:@"Chalkduster"];
     score.name = @"Score";
-    score.position = CGPointMake(_hud.position.x + 25, _hud.position.y + 630);
+    score.position = CGPointMake(CGRectGetMinX(self.frame)+35, CGRectGetMaxY(self.frame)-35);
     score.text = [NSString stringWithFormat:@"%ld",(long) _score];
     [_hud addChild:score];
     
+    _button = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(50, 50)];
+    [_button setLabelWithText:@"Pause" andFont:[UIFont fontWithName:@"Chalkduster" size:14] withColor:[UIColor whiteColor]];
+    _button.position = CGPointMake(CGRectGetMaxX(self.frame) -30, CGRectGetMaxY(self.frame) -25);
+    _button.name = @"pause";
+    [_hud addChild:_button];
+    
+    SKAction *pauseGame = [SKAction performSelector:@selector(pauseGame) onTarget:self];
+    
+    [_button performAction:pauseGame onObject:self withEvent:AGButtonControlEventTouchDown];
+    
     [self addChild:_hud];
     
+}
+
+-(void) pauseGame
+{
+    if (_isPaused)
+    {
+        _isPaused = NO;
+        self.gameplayNode.paused = NO;
+    }
+    else
+    {
+        _isPaused = YES;
+        self.gameplayNode.paused = YES;
+    }
+
     
+//    _pauseMenu = [[SKNode alloc]init];
+//    _pauseMenu.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+//    
+//    [self addChild:_pauseMenu];
+//    
+//    AGSpriteButton *resume = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(50, 50)];
+//    [resume setLabelWithText:@"Resume" andFont:[UIFont fontWithName:@"Chalkduster" size:14] withColor:[UIColor whiteColor]];
+//    resume.position = CGPointMake(_pauseMenu.frame.size.width/2, _pauseMenu.frame.size.height/2);
+//    
+//    SKAction *resumeGame = [SKAction performSelector:@selector(resumeGame) onTarget:self.scene];
+//    [_button performAction:resumeGame onObject:self withEvent:AGButtonControlEventTouchDown];
+//    
+//    [_pauseMenu addChild:resume];
+    
+}
+
+-(void) resumeGame
+{
+    _isPaused = NO;
+    self.gameplayNode.paused = NO;
 }
 
 -(void) updateScore
 {
     SKLabelNode *score = (SKLabelNode*)[_hud childNodeWithName:@"Score"];
-    
     score.text = [NSString stringWithFormat:@"%ld",(long) _score];
-    
 }
 
 
@@ -264,7 +339,7 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     _player.physicsBody.categoryBitMask = Player;
     _player.physicsBody.contactTestBitMask = Laser;
     
-    [self addChild:_player];
+    [_gameplayNode addChild:_player];
 }
 
 - (void)addBG
@@ -276,7 +351,7 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     sky.position = CGPointMake(0, 0);
     sky.name = @"bg";
     
-    [self addChild:sky];
+    [_gameplayNode addChild:sky];
 }
 
 -(void)addLaser

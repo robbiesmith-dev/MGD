@@ -24,6 +24,9 @@
 		730F17A51A83EE9400F106C4 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A41A83EE9400F106C4 /* Spaceship.png */; };
 		730F17A71A83F97C00F106C4 /* rock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A61A83F97C00F106C4 /* rock.wav */; };
 		730F17AA1A8413CE00F106C4 /* spaceship.wav in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A91A8413CE00F106C4 /* spaceship.wav */; };
+		7385B3A41A96552200D7D09E /* AGSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385B3A31A96552200D7D09E /* AGSpriteButton.m */; };
+		7385B3A71A9670D600D7D09E /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7385B3A51A9670D600D7D09E /* MyParticle.sks */; };
+		7385B3A81A9670D600D7D09E /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7385B3A61A9670D600D7D09E /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,10 @@
 		730F17A41A83EE9400F106C4 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		730F17A61A83F97C00F106C4 /* rock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rock.wav; sourceTree = "<group>"; };
 		730F17A91A8413CE00F106C4 /* spaceship.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spaceship.wav; sourceTree = "<group>"; };
+		7385B3A21A96552200D7D09E /* AGSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSpriteButton.h; sourceTree = "<group>"; };
+		7385B3A31A96552200D7D09E /* AGSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSpriteButton.m; sourceTree = "<group>"; };
+		7385B3A51A9670D600D7D09E /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		7385B3A61A9670D600D7D09E /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +133,8 @@
 		730F17321A81BAB900F106C4 /* MGD_1502 */ = {
 			isa = PBXGroup;
 			children = (
+				7385B3A21A96552200D7D09E /* AGSpriteButton.h */,
+				7385B3A31A96552200D7D09E /* AGSpriteButton.m */,
 				730F175E1A81BBFC00F106C4 /* Scenes */,
 				730E659A1A8D32E30095A5C0 /* Images */,
 				730E65991A8D32C20095A5C0 /* Sounds */,
@@ -141,6 +150,8 @@
 		730F17331A81BAB900F106C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7385B3A51A9670D600D7D09E /* MyParticle.sks */,
+				7385B3A61A9670D600D7D09E /* spark.png */,
 				730F17371A81BAB900F106C4 /* AppDelegate.h */,
 				730F17381A81BAB900F106C4 /* AppDelegate.m */,
 				730F173F1A81BAB900F106C4 /* MGDVC.h */,
@@ -260,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7385B3A81A9670D600D7D09E /* spark.png in Resources */,
 				730F17A51A83EE9400F106C4 /* Spaceship.png in Resources */,
 				730F17491A81BAB900F106C4 /* LaunchScreen.xib in Resources */,
 				730E65971A8D16AF0095A5C0 /* You Lose.mp3 in Resources */,
@@ -269,6 +281,7 @@
 				730F17AA1A8413CE00F106C4 /* spaceship.wav in Resources */,
 				730F176C1A83ECAB00F106C4 /* newBG.png in Resources */,
 				730E65D81A8D36E50095A5C0 /* MGD_BG_Track.mp3 in Resources */,
+				7385B3A71A9670D600D7D09E /* MyParticle.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +303,7 @@
 				730F17411A81BAB900F106C4 /* MGDVC.m in Sources */,
 				730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */,
 				730F173C1A81BAB900F106C4 /* GamePlayScene.m in Sources */,
+				7385B3A41A96552200D7D09E /* AGSpriteButton.m in Sources */,
 				730E659F1A8D35020095A5C0 /* GameOverScene.m in Sources */,
 				730F17361A81BAB900F106C4 /* main.m in Sources */,
 			);
