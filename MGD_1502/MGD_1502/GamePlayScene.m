@@ -22,6 +22,10 @@
 
 @property BOOL spaceshipTouched;
 
+@property (nonatomic) NSInteger score;
+
+@property (nonatomic) SKNode *hud;
+
 
 @end
 
@@ -38,6 +42,9 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 {
     if (self = [super initWithSize:size])
     {
+        
+        _score = 0;
+        
         self.spaceshipTouched = NO;
         
         //Manage Time Intervals
@@ -56,6 +63,7 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         [self addBG];
         [self addPlayer];
         [self addGround];
+        [self addHUD];
         
         NSURL *trackURL = [[NSBundle mainBundle] URLForResource:@"MGD_BG_Track" withExtension:@"mp3"];
         
@@ -202,6 +210,12 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         SKSpriteNode *laser = (SKSpriteNode*)bodyOne.node;
         
         [laser removeFromParent];
+        
+        _score++;
+        
+        [self updateScore];
+        
+        NSLog(@"%ld",(long) _score);
     }
 }
 
@@ -210,6 +224,32 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)addHUD
+{
+    _hud = [[SKNode alloc] init];
+    _hud.position = CGPointMake(self.frame.origin.x, self.frame.origin.y);
+    _hud.zPosition = 20;
+    
+    SKLabelNode *score = [[SKLabelNode alloc] initWithFontNamed:@"Chalkduster"];
+    score.name = @"Score";
+    score.position = CGPointMake(_hud.position.x + 25, _hud.position.y + 630);
+    score.text = [NSString stringWithFormat:@"%ld",(long) _score];
+    [_hud addChild:score];
+    
+    [self addChild:_hud];
+    
+    
+}
+
+-(void) updateScore
+{
+    SKLabelNode *score = (SKLabelNode*)[_hud childNodeWithName:@"Score"];
+    
+    score.text = [NSString stringWithFormat:@"%ld",(long) _score];
+    
+}
+
 
 - (void)addPlayer
 {
