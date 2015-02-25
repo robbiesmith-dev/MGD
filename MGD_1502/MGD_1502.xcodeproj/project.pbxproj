@@ -24,6 +24,8 @@
 		730F17A51A83EE9400F106C4 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A41A83EE9400F106C4 /* Spaceship.png */; };
 		730F17A71A83F97C00F106C4 /* rock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A61A83F97C00F106C4 /* rock.wav */; };
 		730F17AA1A8413CE00F106C4 /* spaceship.wav in Resources */ = {isa = PBXBuildFile; fileRef = 730F17A91A8413CE00F106C4 /* spaceship.wav */; };
+		7329A8A01A9E3BA200FCF94B /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7329A89F1A9E3BA200FCF94B /* IntroScene.m */; };
+		7329A8A31A9E3C4400FCF94B /* CreditScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7329A8A21A9E3C4400FCF94B /* CreditScene.m */; };
 		7385B3A41A96552200D7D09E /* AGSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385B3A31A96552200D7D09E /* AGSpriteButton.m */; };
 		7385B3A71A9670D600D7D09E /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7385B3A51A9670D600D7D09E /* MyParticle.sks */; };
 		7385B3A81A9670D600D7D09E /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7385B3A61A9670D600D7D09E /* spark.png */; };
@@ -66,6 +68,10 @@
 		730F17A41A83EE9400F106C4 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		730F17A61A83F97C00F106C4 /* rock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rock.wav; sourceTree = "<group>"; };
 		730F17A91A8413CE00F106C4 /* spaceship.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spaceship.wav; sourceTree = "<group>"; };
+		7329A89E1A9E3BA200FCF94B /* IntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroScene.h; sourceTree = "<group>"; };
+		7329A89F1A9E3BA200FCF94B /* IntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroScene.m; sourceTree = "<group>"; };
+		7329A8A11A9E3C4400FCF94B /* CreditScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditScene.h; sourceTree = "<group>"; };
+		7329A8A21A9E3C4400FCF94B /* CreditScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditScene.m; sourceTree = "<group>"; };
 		7385B3A21A96552200D7D09E /* AGSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSpriteButton.h; sourceTree = "<group>"; };
 		7385B3A31A96552200D7D09E /* AGSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSpriteButton.m; sourceTree = "<group>"; };
 		7385B3A51A9670D600D7D09E /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
@@ -133,8 +139,6 @@
 		730F17321A81BAB900F106C4 /* MGD_1502 */ = {
 			isa = PBXGroup;
 			children = (
-				7385B3A21A96552200D7D09E /* AGSpriteButton.h */,
-				7385B3A31A96552200D7D09E /* AGSpriteButton.m */,
 				730F175E1A81BBFC00F106C4 /* Scenes */,
 				730E659A1A8D32E30095A5C0 /* Images */,
 				730E65991A8D32C20095A5C0 /* Sounds */,
@@ -150,6 +154,8 @@
 		730F17331A81BAB900F106C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7385B3A21A96552200D7D09E /* AGSpriteButton.h */,
+				7385B3A31A96552200D7D09E /* AGSpriteButton.m */,
 				7385B3A51A9670D600D7D09E /* MyParticle.sks */,
 				7385B3A61A9670D600D7D09E /* spark.png */,
 				730F17371A81BAB900F106C4 /* AppDelegate.h */,
@@ -183,10 +189,14 @@
 		730F175E1A81BBFC00F106C4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7329A89E1A9E3BA200FCF94B /* IntroScene.h */,
+				7329A89F1A9E3BA200FCF94B /* IntroScene.m */,
 				730F173A1A81BAB900F106C4 /* GamePlayScene.h */,
 				730F173B1A81BAB900F106C4 /* GamePlayScene.m */,
 				730E659D1A8D35020095A5C0 /* GameOverScene.h */,
 				730E659E1A8D35020095A5C0 /* GameOverScene.m */,
+				7329A8A11A9E3C4400FCF94B /* CreditScene.h */,
+				7329A8A21A9E3C4400FCF94B /* CreditScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -300,6 +310,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				730E65951A8BE8600095A5C0 /* RandomGen.m in Sources */,
+				7329A8A31A9E3C4400FCF94B /* CreditScene.m in Sources */,
+				7329A8A01A9E3BA200FCF94B /* IntroScene.m in Sources */,
 				730F17411A81BAB900F106C4 /* MGDVC.m in Sources */,
 				730F17391A81BAB900F106C4 /* AppDelegate.m in Sources */,
 				730F173C1A81BAB900F106C4 /* GamePlayScene.m in Sources */,

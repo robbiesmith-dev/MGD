@@ -15,6 +15,7 @@
 @interface GamePlayScene ()
 
 @property (nonatomic) NSTimeInterval lastUpdate;
+
 @property (nonatomic) NSTimeInterval lastTimeSpawned;
 
 @property (nonatomic) AVAudioPlayer *track;
@@ -295,22 +296,6 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         _isPaused = YES;
         self.gameplayNode.paused = YES;
     }
-
-    
-//    _pauseMenu = [[SKNode alloc]init];
-//    _pauseMenu.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-//    
-//    [self addChild:_pauseMenu];
-//    
-//    AGSpriteButton *resume = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(50, 50)];
-//    [resume setLabelWithText:@"Resume" andFont:[UIFont fontWithName:@"Chalkduster" size:14] withColor:[UIColor whiteColor]];
-//    resume.position = CGPointMake(_pauseMenu.frame.size.width/2, _pauseMenu.frame.size.height/2);
-//    
-//    SKAction *resumeGame = [SKAction performSelector:@selector(resumeGame) onTarget:self.scene];
-//    [_button performAction:resumeGame onObject:self withEvent:AGButtonControlEventTouchDown];
-//    
-//    [_pauseMenu addChild:resume];
-    
 }
 
 -(void) resumeGame

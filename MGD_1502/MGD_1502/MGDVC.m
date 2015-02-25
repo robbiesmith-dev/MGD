@@ -8,6 +8,7 @@
 
 #import "MGDVC.h"
 #import "GamePlayScene.h"
+#import "IntroScene.h"
 
 @implementation MGDVC
 
@@ -21,7 +22,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [GamePlayScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [IntroScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
