@@ -34,8 +34,6 @@
 
 @property (nonatomic) AGSpriteButton *button;
 
-@property BOOL isPaused;
-
 @end
 
 typedef NS_OPTIONS(NSUInteger, Collitions)
@@ -51,6 +49,8 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 {
     if (self = [super initWithSize:size])
     {
+        [self registerAppTransitionObservers];
+        
         _gameplayNode = [[SKNode alloc]init];
         _gameplayNode.position = CGPointMake(self.frame.origin.x, self.frame.origin.y);
         [self addChild:_gameplayNode];
@@ -95,8 +95,11 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    /* Called when a touch begins */
-    
+    if (_isPaused)
+    {
+        return;
+        
+    }
     for (UITouch *touch in touches)
     {
         //CGPoint location = [touch locationInNode:self];
@@ -127,6 +130,10 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (_isPaused)
+    {
+        return;
+    }
     if (self.spaceshipTouched == YES)
     {
         for (UITouch *touch in touches)
@@ -190,6 +197,7 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
+    
     SKPhysicsBody *bodyOne;
     SKPhysicsBody *bodyTwo;
 
@@ -372,6 +380,51 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     ground.name = @"laser";
     
     [self addChild:ground];
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)registerAppTransitionObservers
+{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillResignActive)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:NULL];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:NULL];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:NULL];
+}
+
+-(void)applicationWillResignActive
+{
+    if (!_isPaused)
+    {
+        [self pauseGame];
+    }
+}
+
+-(void)applicationDidEnterBackground
+{
+    [_track stop];
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
+    self.gameplayNode.paused = YES;
+}
+
+-(void)applicationWillEnterForeground
+{
+    self.view.paused = NO;
+    if (_isPaused)
+    {
+        self.gameplayNode.paused = YES;
+    }
 }
 
 

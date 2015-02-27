@@ -12,4 +12,8 @@
 
 @property (nonatomic) SKSpriteNode *player;
 
+@property (nonatomic, assign) BOOL isPaused;
+
+
+
 @end
