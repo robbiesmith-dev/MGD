@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import "GameOverScene.h"
 
-@interface MGDVC : UIViewController
+@interface MGDVC : UIViewController 
+
+@property (strong, nonatomic) GameOverScene *gameOverScene;
 
 @end

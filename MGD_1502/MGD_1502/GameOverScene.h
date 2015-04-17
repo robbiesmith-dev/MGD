@@ -8,6 +8,15 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@protocol sceneDelegate <NSObject>
+
+-(void)showShareScreen;
+
+@end
+
+
 @interface GameOverScene : SKScene
+
+@property (strong, nonatomic) id <sceneDelegate> myDelegate;
 
 @end

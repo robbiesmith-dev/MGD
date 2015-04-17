@@ -18,6 +18,10 @@
 
 @property (nonatomic) NSTimeInterval lastTimeSpawned;
 
+@property (nonatomic) NSTimeInterval totalGameTime;
+
+@property (nonatomic) NSTimeInterval addLasers;
+
 @property (nonatomic) AVAudioPlayer *track;
 
 @property CGPoint spaceshipCenter;
@@ -33,6 +37,12 @@
 @property (nonatomic) SKNode *pauseMenu;
 
 @property (nonatomic) AGSpriteButton *button;
+
+@property (nonatomic) SKSpriteNode *life;
+
+@property (nonatomic) NSInteger lives;
+
+
 
 @end
 
@@ -56,12 +66,18 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         [self addChild:_gameplayNode];
         
         _score = 0;
+        _lives = 3;
         
         self.spaceshipTouched = NO;
         
         //Manage Time Intervals
         self.lastUpdate = 0;
+        
         self.lastTimeSpawned = 0;
+        
+        self.totalGameTime = 0;
+        
+        self.addLasers = 0;
         
         // add a physics body to the scene
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
@@ -181,6 +197,7 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         if (self.lastUpdate)
         {
             self.lastTimeSpawned += currentTime - self.lastUpdate;
+            self.totalGameTime += currentTime - self.lastUpdate;
         }
         
         if (self.lastTimeSpawned > .5)
@@ -191,6 +208,21 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         }
         
         self.lastUpdate = currentTime;
+        
+        
+        if (self.totalGameTime > 240)
+        {
+            self.addLasers = .4;
+        }
+        else if (self.totalGameTime > 120)
+        {
+            self.addLasers = .3;
+        }
+        else if (self.totalGameTime > 10)
+        {
+            self.addLasers = .2;
+        }
+
     }
 
 }
@@ -213,6 +245,37 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     }
     if (bodyOne.categoryBitMask == Player && bodyTwo.categoryBitMask == Laser)
     {
+        if (_lives > 0)
+        {
+            
+            if (_lives == 3)
+            {
+                SKNode *life = [_hud childNodeWithName:@"one"];
+                SKSpriteNode *laser = (SKSpriteNode*)bodyTwo.node;
+               // [self runAction:[SKAction playSoundFileNamed:@"LifeLost.m4a" waitForCompletion:NO]];
+                [laser removeFromParent];
+                [life removeFromParent];
+            }
+            else if (_lives == 2)
+            {
+                SKNode *life = [_hud childNodeWithName:@"two"];
+                SKSpriteNode *laser = (SKSpriteNode*)bodyTwo.node;
+                //[self runAction:[SKAction playSoundFileNamed:@"LifeLost.m4a" waitForCompletion:NO]];
+                [laser removeFromParent];
+                [life removeFromParent];
+            }
+            else if (_lives == 1)
+            {
+                SKNode *life = [_hud childNodeWithName:@"three"];
+                SKSpriteNode *laser = (SKSpriteNode*)bodyTwo.node;
+               // [self runAction:[SKAction playSoundFileNamed:@"LifeLost.m4a" waitForCompletion:NO]];
+                [laser removeFromParent];
+                [life removeFromParent];
+            }
+            
+            _lives--;
+            return;
+        }
         NSLog(@"LOSSER");
         
         [self.track stop];
@@ -283,6 +346,24 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     _button.position = CGPointMake(CGRectGetMaxX(self.frame) -30, CGRectGetMaxY(self.frame) -25);
     _button.name = @"pause";
     [_hud addChild:_button];
+    
+    _life = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+    _life.size = CGSizeMake(25, 25);
+    _life.position = CGPointMake(CGRectGetMaxX(self.frame) -20, CGRectGetMaxY(self.frame) -60);
+    _life.name = @"one";
+    [_hud addChild:_life];
+    
+    _life = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+    _life.size = CGSizeMake(25, 25);
+    _life.position = CGPointMake(CGRectGetMaxX(self.frame) -50, CGRectGetMaxY(self.frame) -60);
+    _life.name = @"two";
+    [_hud addChild:_life];
+    
+    _life = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+    _life.size = CGSizeMake(25, 25);
+    _life.position = CGPointMake(CGRectGetMaxX(self.frame) -80, CGRectGetMaxY(self.frame) -60);
+    _life.name = @"three";
+    [_hud addChild:_life];
     
     SKAction *pauseGame = [SKAction performSelector:@selector(pauseGame) onTarget:self];
     
@@ -426,6 +507,5 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         self.gameplayNode.paused = YES;
     }
 }
-
 
 @end

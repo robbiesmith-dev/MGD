@@ -9,18 +9,23 @@
 #import "MGDVC.h"
 #import "GamePlayScene.h"
 #import "IntroScene.h"
+#import <Social/Social.h>
 
 @implementation MGDVC
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
+    _gameOverScene = [GameOverScene sceneWithSize:skView.bounds.size];
+    _gameOverScene.myDelegate = self;
+
     // Create and configure the scene.
     SKScene * scene = [IntroScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
@@ -55,6 +60,20 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+-(void)showShareScreen
+{
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        SLComposeViewController *tweetSheet = [SLComposeViewController
+                                               composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        [tweetSheet setInitialText:@"TestTweet from the Game !!"];
+        [self presentViewController:tweetSheet animated:YES completion:nil];
+        
+    }
 }
 
 @end

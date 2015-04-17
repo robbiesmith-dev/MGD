@@ -29,6 +29,8 @@
 		7385B3A41A96552200D7D09E /* AGSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385B3A31A96552200D7D09E /* AGSpriteButton.m */; };
 		7385B3A71A9670D600D7D09E /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7385B3A51A9670D600D7D09E /* MyParticle.sks */; };
 		7385B3A81A9670D600D7D09E /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7385B3A61A9670D600D7D09E /* spark.png */; };
+		73C5C9061AB4ACF200E31F0E /* tweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C5C9051AB4ACF200E31F0E /* tweet.png */; };
+		73C5C9081AB4AE9200E31F0E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C5C9071AB4AE9200E31F0E /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,9 @@
 		7385B3A31A96552200D7D09E /* AGSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSpriteButton.m; sourceTree = "<group>"; };
 		7385B3A51A9670D600D7D09E /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		7385B3A61A9670D600D7D09E /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		73C5C9041AB4A3F200E31F0E /* LifeLost.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LifeLost.m4a; sourceTree = "<group>"; };
+		73C5C9051AB4ACF200E31F0E /* tweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweet.png; sourceTree = "<group>"; };
+		73C5C9071AB4AE9200E31F0E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73C5C9081AB4AE9200E31F0E /* Social.framework in Frameworks */,
 				730E659C1A8D33590095A5C0 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +108,7 @@
 			children = (
 				730E65D71A8D36E50095A5C0 /* MGD_BG_Track.mp3 */,
 				730E65961A8D16AF0095A5C0 /* You Lose.mp3 */,
+				73C5C9041AB4A3F200E31F0E /* LifeLost.m4a */,
 				730F17A61A83F97C00F106C4 /* rock.wav */,
 				730F17A91A8413CE00F106C4 /* spaceship.wav */,
 			);
@@ -111,6 +118,7 @@
 		730E659A1A8D32E30095A5C0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				73C5C9051AB4ACF200E31F0E /* tweet.png */,
 				730F176B1A83ECAB00F106C4 /* newBG.png */,
 				730F17A41A83EE9400F106C4 /* Spaceship.png */,
 			);
@@ -120,6 +128,7 @@
 		730F17271A81BAB900F106C4 = {
 			isa = PBXGroup;
 			children = (
+				73C5C9071AB4AE9200E31F0E /* Social.framework */,
 				730E659B1A8D33590095A5C0 /* AVFoundation.framework */,
 				730F17321A81BAB900F106C4 /* MGD_1502 */,
 				730F17511A81BAB900F106C4 /* MGD_1502Tests */,
@@ -286,6 +295,7 @@
 				730F17491A81BAB900F106C4 /* LaunchScreen.xib in Resources */,
 				730E65971A8D16AF0095A5C0 /* You Lose.mp3 in Resources */,
 				730F17461A81BAB900F106C4 /* Images.xcassets in Resources */,
+				73C5C9061AB4ACF200E31F0E /* tweet.png in Resources */,
 				730F17A71A83F97C00F106C4 /* rock.wav in Resources */,
 				730F17441A81BAB900F106C4 /* Main.storyboard in Resources */,
 				730F17AA1A8413CE00F106C4 /* spaceship.wav in Resources */,
