@@ -40,7 +40,7 @@
         myLabel.text = @"Game Over";
         myLabel.fontSize = 45;
         myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame)+175);
+                                       CGRectGetMidY(self.frame)+225);
         
         [self addChild:myLabel];
         
@@ -50,7 +50,7 @@
         scoreLabel.text = [NSString stringWithFormat:@"Score: %@", _recentScore];
         scoreLabel.fontSize = 45;
         scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame)+50);
+                                       CGRectGetMidY(self.frame)+75);
         
         [self addChild:scoreLabel];
         
@@ -60,7 +60,7 @@
         highScoreLabel.text = [NSString stringWithFormat:@"High Score: %@", _highScore];
         highScoreLabel.fontSize = 45;
         highScoreLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                          CGRectGetMidY(self.frame)+15);
+                                          CGRectGetMidY(self.frame)+25);
         
         [self addChild:highScoreLabel];
         
@@ -122,9 +122,22 @@
 
 -(void)tweetGame
 {
-    
-
-
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        SLComposeViewController *TWITTER = [SLComposeViewController
+                                            composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        [TWITTER setInitialText:[NSString stringWithFormat:@"I got a score of %@ in MGD_1502!!", _highScore]];
+        
+        
+        
+        [self.view.window.rootViewController presentViewController:TWITTER animated:YES completion:nil];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"No Twitter" message:@"To share your high score to Twitter, please log into Twitter in Setting > Twitter" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 -(void)showLeaderboard
