@@ -252,7 +252,6 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
             {
                 SKNode *life = [_hud childNodeWithName:@"one"];
                 SKSpriteNode *laser = (SKSpriteNode*)bodyTwo.node;
-               // [self runAction:[SKAction playSoundFileNamed:@"LifeLost.m4a" waitForCompletion:NO]];
                 [laser removeFromParent];
                 [life removeFromParent];
             }
@@ -260,7 +259,6 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
             {
                 SKNode *life = [_hud childNodeWithName:@"two"];
                 SKSpriteNode *laser = (SKSpriteNode*)bodyTwo.node;
-                //[self runAction:[SKAction playSoundFileNamed:@"LifeLost.m4a" waitForCompletion:NO]];
                 [laser removeFromParent];
                 [life removeFromParent];
             }
@@ -268,7 +266,6 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
             {
                 SKNode *life = [_hud childNodeWithName:@"three"];
                 SKSpriteNode *laser = (SKSpriteNode*)bodyTwo.node;
-               // [self runAction:[SKAction playSoundFileNamed:@"LifeLost.m4a" waitForCompletion:NO]];
                 [laser removeFromParent];
                 [life removeFromParent];
             }
