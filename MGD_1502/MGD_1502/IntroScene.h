@@ -7,7 +7,13 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <GameKit/GameKit.h>
 
-@interface IntroScene : SKScene
+
+@interface IntroScene : SKScene <GKGameCenterControllerDelegate>
+
+@property (strong, nonatomic) NSString *leaderboardID;
+
+-(id)initWithSize:(CGSize)size leaderboardID:(NSString*)leaderboardID;
 
 @end

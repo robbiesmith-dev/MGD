@@ -10,28 +10,40 @@
 #import "GamePlayScene.h"
 #import "IntroScene.h"
 #import <Social/Social.h>
+#import <GameKit/GameKit.h>
+
+@interface MGDVC ()
+
+@property (nonatomic) BOOL gameCenterEnabled;
+
+@property (nonatomic)  IntroScene *scene;
+
+@end
 
 @implementation MGDVC
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self authenticateLocalPlayer];
+    
+
+}
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
     
-    _gameOverScene = [GameOverScene sceneWithSize:skView.bounds.size];
-    _gameOverScene.myDelegate = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _scene = [[IntroScene alloc]initWithSize:skView.bounds.size leaderboardID:_leaderboardIdentifier];
+        _scene.scaleMode = SKSceneScaleModeAspectFill;
+        [skView presentScene:_scene];
 
-    // Create and configure the scene.
-    SKScene * scene = [IntroScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    
-    // Present the scene.
-    [skView presentScene:scene];
+    });
 }
 
 - (BOOL)shouldAutorotate
@@ -74,6 +86,43 @@
         [self presentViewController:tweetSheet animated:YES completion:nil];
         
     }
+}
+
+-(void)authenticateLocalPlayer
+{
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    
+    localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error)
+    {
+        if (viewController != nil)
+        {
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+        else
+        {
+            if ([GKLocalPlayer localPlayer].authenticated)
+            {
+                _gameCenterEnabled = YES;
+                
+                // Get the default leaderboard identifier.
+                [[GKLocalPlayer localPlayer] loadDefaultLeaderboardIdentifierWithCompletionHandler:^(NSString *leaderboardIdentifier, NSError *error) {
+                    
+                    if (error != nil)
+                    {
+                        NSLog(@"%@", [error localizedDescription]);
+                    }
+                    else
+                    {
+                        _leaderboardIdentifier = leaderboardIdentifier;
+                    }
+                }];
+            }
+            
+            else{
+                _gameCenterEnabled = NO;
+            }
+        }
+    };
 }
 
 @end

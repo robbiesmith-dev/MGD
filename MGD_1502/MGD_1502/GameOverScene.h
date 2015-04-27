@@ -7,16 +7,26 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <GameKit/GameKit.h>
 
-@protocol sceneDelegate <NSObject>
+
+@protocol sceneDelegate <NSObject> 
 
 -(void)showShareScreen;
 
 @end
 
 
-@interface GameOverScene : SKScene
+@interface GameOverScene : SKScene <GKGameCenterControllerDelegate>
 
 @property (strong, nonatomic) id <sceneDelegate> myDelegate;
+
+@property (strong, nonatomic) NSString *highScore;
+
+@property (strong, nonatomic) NSString *recentScore;
+
+@property (strong, nonatomic) NSString *leaderboardId;
+
+-(id)initWithSize:(CGSize)size leaderboardId:(NSString*)leadedboardId recentScore:(NSString*)rScore highscore:(NSString*)hscore;
 
 @end

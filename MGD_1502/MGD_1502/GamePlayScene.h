@@ -14,6 +14,10 @@
 
 @property (nonatomic, assign) BOOL isPaused;
 
+@property (nonatomic, strong) NSString *leaderboardID;
+
+-(id)initWithSize:(CGSize)size leaderboardID:(NSString*)leaderboardID lastScore:(NSString*)lastScore;
+
 
 
 @end

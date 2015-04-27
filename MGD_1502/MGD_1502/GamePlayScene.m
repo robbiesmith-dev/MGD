@@ -8,9 +8,11 @@
 
 #import "GamePlayScene.h"
 #import "RandomGen.h"
+#import "MGDVC.h"
 #import <AVFoundation/AVFoundation.h>
 #import "GameOverScene.h"
 #import "AGSpriteButton.h"
+#import <GameKit/GameKit.h>
 
 @interface GamePlayScene ()
 
@@ -29,6 +31,10 @@
 @property BOOL spaceshipTouched;
 
 @property (nonatomic) NSInteger score;
+
+@property (nonatomic) NSInteger lastscore;
+
+@property (nonatomic) NSString *highScore;
 
 @property (nonatomic) SKNode *hud;
 
@@ -55,10 +61,16 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
 
 @implementation GamePlayScene
 
--(id)initWithSize:(CGSize)size
+-(id)initWithSize:(CGSize)size leaderboardID:(NSString*)leaderboardID lastScore:(NSString*)lastScore
 {
     if (self = [super initWithSize:size])
     {
+        
+        _leaderboardID = leaderboardID;
+        _lastscore = lastScore.integerValue;
+        
+        NSLog(@"%@", lastScore);
+        
         [self registerAppTransitionObservers];
         
         _gameplayNode = [[SKNode alloc]init];
@@ -297,8 +309,21 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
             [boom removeFromParent];
         }];
         
+        [self reportScore];
+        
+        NSString *scoreString = [NSString stringWithFormat:@"%ld", (long)_score];
+        
+        if (_score > _lastscore)
+        {
+            _highScore = [NSString stringWithFormat:@"%ld", (long)_score];
+        }
+        else if (_lastscore > _score)
+        {
+            _highScore = [NSString stringWithFormat:@"%ld", (long)_lastscore];
+        }
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            GameOverScene *gameOverScene = [GameOverScene sceneWithSize:self.frame.size];
+            GameOverScene *gameOverScene = [[GameOverScene alloc]initWithSize:self.frame.size leaderboardId:_leaderboardID recentScore:scoreString highscore:_highScore];
             SKTransition *transition = [SKTransition fadeWithDuration:1.0];
             [self.view presentScene:gameOverScene transition:transition];
         });
@@ -503,6 +528,21 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     {
         self.gameplayNode.paused = YES;
     }
+}
+
+-(void)reportScore
+{
+    
+    GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:_leaderboardID];
+    score.value = _score;
+    
+    [GKScore reportScores:@[score] withCompletionHandler:^(NSError *error)
+    {
+        if (error != nil)
+        {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+    }];
 }
 
 @end

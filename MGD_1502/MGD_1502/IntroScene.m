@@ -10,20 +10,30 @@
 #import "AGSpriteButton.h"
 #import "GamePlayScene.h"
 #import "CreditScene.h"
+#import <GameKit/GameKit.h>
+
 
 @interface IntroScene ()
 
 @property (strong, nonatomic) AGSpriteButton *playButton;
 @property (strong, nonatomic) AGSpriteButton *creditButton;
+@property (strong, nonatomic) AGSpriteButton *leaderboardButton;
+@property (strong, nonatomic) NSString *lastScore;
+
+
 
 @end
 
 @implementation IntroScene
 
--(id)initWithSize:(CGSize)size
+-(id)initWithSize:(CGSize)size leaderboardID:(NSString*)leaderboardID
 {
     if (self = [super initWithSize:size])
     {
+        
+        _leaderboardID = leaderboardID;
+        
+        _lastScore = @"0";
         
         SKLabelNode *titleLable = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         
@@ -36,7 +46,7 @@
         
         _playButton = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(50, 50)];
         [_playButton setLabelWithText:@"Play" andFont:[UIFont fontWithName:@"Chalkduster" size:44] withColor:[UIColor whiteColor]];
-        _playButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)+20);
+        _playButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         _playButton.name = @"play";
         [self addChild:_playButton];
         
@@ -44,22 +54,22 @@
         
         [_playButton performAction:playGame onObject:self withEvent:AGButtonControlEventTouchDown];
         
-        _creditButton = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(50, 50)];
-        [_creditButton setLabelWithText:@"Credits" andFont:[UIFont fontWithName:@"Chalkduster" size:44] withColor:[UIColor whiteColor]];
-        _creditButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) -50);
-        _creditButton.name = @"credits";
-        [self addChild:_creditButton];
+        _leaderboardButton = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(50, 50)];
+        [_leaderboardButton setLabelWithText:@"Leaderboad" andFont:[UIFont fontWithName:@"Chalkduster" size:44] withColor:[UIColor whiteColor]];
+        _leaderboardButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) -125);
+        _leaderboardButton.name = @"leaderboards";
+        [self addChild:_leaderboardButton];
         
-        SKAction *rollCredits = [SKAction performSelector:@selector(rollCredits) onTarget:self];
+        SKAction *showLeaderboard = [SKAction performSelector:@selector(showLeaderboard) onTarget:self];
         
-        [_creditButton performAction:rollCredits onObject:self withEvent:AGButtonControlEventTouchDown];
+        [_leaderboardButton performAction:showLeaderboard onObject:self withEvent:AGButtonControlEventTouchDown];
     }
     return self;
 }
 
 -(void) playGame
 {
-    GamePlayScene *gamePlayScene = [GamePlayScene sceneWithSize:self.frame.size];
+    GamePlayScene *gamePlayScene = [[GamePlayScene alloc]initWithSize:self.frame.size leaderboardID:_leaderboardID lastScore:_lastScore];
     SKTransition *transition = [SKTransition fadeWithDuration:1.0];
     [self.view presentScene:gamePlayScene transition:transition];
 }
@@ -69,6 +79,23 @@
     CreditScene *creditScene = [CreditScene sceneWithSize:self.frame.size];
     SKTransition *transition = [SKTransition fadeWithDuration:1.0];
     [self.view presentScene:creditScene transition:transition];
+}
+
+-(void)showLeaderboard
+{
+    GKGameCenterViewController *gcViewController = [[GKGameCenterViewController alloc] init];
+    
+    gcViewController.gameCenterDelegate = self;
+
+    gcViewController.viewState = GKGameCenterViewControllerStateLeaderboards;
+    gcViewController.leaderboardIdentifier = _leaderboardID;
+    
+    [self.view.window.rootViewController presentViewController:gcViewController animated:YES completion:nil];
+}
+
+-(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+    [gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 

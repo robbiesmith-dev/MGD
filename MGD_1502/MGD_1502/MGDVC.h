@@ -14,4 +14,8 @@
 
 @property (strong, nonatomic) GameOverScene *gameOverScene;
 
+@property (nonatomic, strong) NSString *leaderboardIdentifier;
+
+-(void)authenticateLocalPlayer;
+
 @end
