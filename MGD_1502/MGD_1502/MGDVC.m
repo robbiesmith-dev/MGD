@@ -18,6 +18,7 @@
 
 @property (nonatomic)  IntroScene *scene;
 
+
 @end
 
 @implementation MGDVC
@@ -114,6 +115,10 @@
                     else
                     {
                         _leaderboardIdentifier = leaderboardIdentifier;
+                        SKView * skView = (SKView *)self.view;
+                        _scene = [[IntroScene alloc]initWithSize:skView.bounds.size leaderboardID:_leaderboardIdentifier];
+                        _scene.scaleMode = SKSceneScaleModeAspectFill;
+                        [skView presentScene:_scene];
                     }
                 }];
             }

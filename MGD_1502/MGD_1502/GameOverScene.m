@@ -83,7 +83,7 @@
         [_playAgianButton performAction:playAgain onObject:self withEvent:AGButtonControlEventTouchDown];
         
         _leaderboardButton = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(50, 50)];
-        [_leaderboardButton setLabelWithText:@"Leaderboad" andFont:[UIFont fontWithName:@"Chalkduster" size:44] withColor:[UIColor whiteColor]];
+        [_leaderboardButton setLabelWithText:@"Leaderboad" andFont:[UIFont fontWithName:@"Chalkduster" size:25] withColor:[UIColor whiteColor]];
         _leaderboardButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) -150);
         _leaderboardButton.name = @"leaderboards";
         [self addChild:_leaderboardButton];
