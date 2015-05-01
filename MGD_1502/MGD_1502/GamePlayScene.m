@@ -212,6 +212,8 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
             self.totalGameTime += currentTime - self.lastUpdate;
         }
         
+        [self updateAchievements];
+        
         if (self.lastTimeSpawned > .5)
         {
             [self addLaser];
@@ -308,6 +310,8 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
         [boom runAction:[SKAction waitForDuration:2.0] completion:^{
             [boom removeFromParent];
         }];
+        
+        
         
         [self reportScore];
         
@@ -528,6 +532,50 @@ typedef NS_OPTIONS(NSUInteger, Collitions)
     {
         self.gameplayNode.paused = YES;
     }
+}
+
+-(void)updateAchievements
+{
+    NSString *achievementIdentifier = nil;
+    float progressPercentage = 0.0;
+    GKAchievement *scoreAchievement = nil;
+    
+    if (_score >= 10)
+    {
+        progressPercentage = 100.0;
+        achievementIdentifier = @"_10P";
+    }
+    
+    else if (_score >= 15)
+    {
+        progressPercentage = 100.0;
+        achievementIdentifier = @"_15P";
+    }
+    
+    else if (_score >= 20)
+    {
+        progressPercentage = 100.0;
+        achievementIdentifier = @"L2";
+    }
+    else if (_score >= 40)
+    {
+        progressPercentage = 100.0;
+        achievementIdentifier = @"L3";
+    }
+    
+    if (achievementIdentifier != nil)
+    {
+        scoreAchievement = [[GKAchievement alloc] initWithIdentifier:achievementIdentifier];
+        scoreAchievement.percentComplete = progressPercentage;
+        
+        NSArray *achievements = @[scoreAchievement];
+        
+        [GKAchievement reportAchievements:achievements withCompletionHandler:^(NSError *error) {
+            if (error != nil) {
+            }
+        }];
+    }
+
 }
 
 -(void)reportScore
